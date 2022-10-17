@@ -1,34 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
- 
-function App() {
-  const [count, setCount] = useState(0)
+import "./App.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import ErrorNotFound from "./components/ErrorNotFound";
+import Register from "./components/Forms/Register";
+import RegisterBr from "./components/Forms/RegisterBr";
+import Login from "./components/Forms/Login.jsx";
+import Home from "./components/Home/Home.jsx";
+import Timer from "./components/Timer.jsx";
+import Barbers from "./components/Home/Barbers.jsx";
 
+
+function App() {
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <>
+      <BrowserRouter>
+        <div className="App">
+          <Switch>  
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/register/employee">
+              <RegisterBr />
+            </Route>
+            <Route exact path="/timer">
+              <Timer />
+            </Route>
+            <Route exact path="/barbers">
+              <Barbers />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            {/* <Route component={ErrorNotFound} /> */}
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
